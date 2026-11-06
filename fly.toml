@@ -1,0 +1,22 @@
+# vultr-creator-research public deployment.
+# Vultr Agent Rush Challenge 2 — Powering the Future of Work.
+# Deploy only with George's Fly token for this app.
+# Root Dockerfile is used: build context is this directory, so the
+# app/ package is copied in whole.
+app = "vultr-creator-research"
+primary_region = "sin"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 512
